@@ -1,14 +1,14 @@
 package com.Renault.MicrosericeGarage.controller;
 
-
 import com.Renault.MicrosericeGarage.dto.GarageDto;
 import com.Renault.MicrosericeGarage.service.GarageService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -35,9 +35,11 @@ public class GarageController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    public ResponseEntity<Map<String, String>> delete(@PathVariable Long id) {
         service.delete(id);
-        return ResponseEntity.noContent().build();
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Garage with ID " + id + " has been successfully deleted.");
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping
