@@ -1,6 +1,7 @@
 # Microservice de Gestion des Garages Renault
 
 Note on Lombok Usage !!
+
 #######################
 
 I chose not to use Lombok in this microservice because I encountered issues with getters, particularly getId(), not being properly recognized. I tried several solutions to fix it, including different configurations and plugin setups.
@@ -39,6 +40,6 @@ Ce projet est basé sur une architecture microservice, facilitant :
 - L'intégration inter-services (API REST)
 
 ## 🔧 Technologies recommandées
-- Java 17+
+- Java 21
 - Spring Boot (Web, Data JPA, Validation)
 - Base de données postgresql, Maven
