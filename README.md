@@ -32,6 +32,4 @@ Ce projet est basé sur une architecture microservice, facilitant :
 ## 🔧 Technologies recommandées
 - Java 17+
 - Spring Boot (Web, Data JPA, Validation)
-- Base de données H2, Maven
-
-Pour toute évolution, veuillez mettre à jour ce document en conséquence.
+- Base de données postgresql, Maven
