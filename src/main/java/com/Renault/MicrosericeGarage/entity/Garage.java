@@ -3,6 +3,12 @@ package com.Renault.MicrosericeGarage.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
+import java.time.DayOfWeek;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Entity
 @Table(name = "garages")
 public class Garage {
@@ -85,4 +91,11 @@ public class Garage {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Convert(converter = DayOpeningMapConverter.class)
+    @Column(columnDefinition = "TEXT")
+    private Map<DayOfWeek, List<OpeningTime>> horairesOuverture = new HashMap<>();
+
+    @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vehicle> vehicles = new ArrayList<>();
 }
