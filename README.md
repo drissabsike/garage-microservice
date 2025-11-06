@@ -1,5 +1,13 @@
 # Microservice de Gestion des Garages Renault
 
+Note on Lombok Usage !!
+#######################
+I chose not to use Lombok in this microservice because I encountered issues with getters, particularly getId(), not being properly recognized. I tried several solutions to fix it, including different configurations and plugin setups.
+
+Eventually, I considered using JPA Buddy, but since I did not have the first version of the plugin, I decided to disable it.
+
+As a result, this project uses standard Java getters and setters, along with constructors generated directly in the microservice classes. This ensures compatibility and avoids runtime issues with object mapping and persistence.
+
 ## 🎯 Use Case
 Ce microservice a pour objectif de gérer les informations liées aux garages affiliés au réseau Renault.  
 Il permet la centralisation, la consultation et la mise à jour des données concernant :
