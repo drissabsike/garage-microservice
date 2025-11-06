@@ -2,6 +2,7 @@
 
 Note on Lombok Usage !!
 #######################
+
 I chose not to use Lombok in this microservice because I encountered issues with getters, particularly getId(), not being properly recognized. I tried several solutions to fix it, including different configurations and plugin setups.
 
 Eventually, I considered using JPA Buddy, but since I did not have the first version of the plugin, I decided to disable it.
