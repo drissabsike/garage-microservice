@@ -3,6 +3,7 @@ package com.Renault.MicrosericeGarage.service;
 import com.Renault.MicrosericeGarage.dto.VehicleDto;
 import com.Renault.MicrosericeGarage.entity.Garage;
 import com.Renault.MicrosericeGarage.entity.Vehicle;
+import com.Renault.MicrosericeGarage.event.VehiclePublisher;
 import com.Renault.MicrosericeGarage.repository.GarageRepository;
 import com.Renault.MicrosericeGarage.repository.VehiculeRepository;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,12 @@ public class VehicleService {
     private final VehiculeRepository vehicleRepository;
     private final GarageRepository garageRepository;
 
-    public VehicleService(VehiculeRepository vehicleRepository, GarageRepository garageRepository) {
+    private final VehiclePublisher vehiclePublisher; // pour events
+
+    public VehicleService(VehiculeRepository vehicleRepository, GarageRepository garageRepository, VehiclePublisher vehiclePublisher) {
         this.vehicleRepository = vehicleRepository;
         this.garageRepository = garageRepository;
+        this.vehiclePublisher = vehiclePublisher;
     }
 
     // CREATE
@@ -37,7 +41,12 @@ public class VehicleService {
         vehicle.setFuelType(dto.getFuelType());
         vehicle.setGarage(garage);
 
-        return vehicleRepository.save(vehicle);
+        Vehicle savedVehicle = vehicleRepository.save(vehicle);
+
+        //Publier l'événement
+        vehiclePublisher.publishVehicleCreated(savedVehicle);
+
+        return savedVehicle;
     }
 
     // UPDATE

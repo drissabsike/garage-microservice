@@ -2,7 +2,9 @@ package com.Renault.MicrosericeGarage.controller;
 
 
 import com.Renault.MicrosericeGarage.dto.VehicleDto;
+import com.Renault.MicrosericeGarage.entity.Garage;
 import com.Renault.MicrosericeGarage.entity.Vehicle;
+import com.Renault.MicrosericeGarage.repository.GarageRepository;
 import com.Renault.MicrosericeGarage.service.VehicleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +16,11 @@ public class VehicleController {
 
     private final VehicleService vehicleService;
 
-    public VehicleController(VehicleService vehicleService) {
+    private final GarageRepository garageRepository;
+
+    public VehicleController(VehicleService vehicleService, GarageRepository garageRepository) {
         this.vehicleService = vehicleService;
+        this.garageRepository = garageRepository;
     }
 
     @GetMapping
@@ -47,4 +52,5 @@ public class VehicleController {
     public List<Vehicle> getByModel(@PathVariable String brand) {
         return vehicleService.getVehiclesByBrand(brand);
     }
+
 }
