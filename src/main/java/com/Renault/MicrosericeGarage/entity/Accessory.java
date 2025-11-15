@@ -2,7 +2,6 @@ package com.Renault.MicrosericeGarage.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "accessories")
@@ -16,7 +15,7 @@ public class Accessory {
     private String name;
     private String description;
     @Column(nullable = false)
-    private BigDecimal price;
+    private Double price;
     @Column(nullable = false)
     private String type;
 
@@ -27,7 +26,7 @@ public class Accessory {
 
     public Accessory(){}
 
-    public Accessory(Long id, String name, String description, BigDecimal price, String type, Vehicle vehicle) {
+    public Accessory(Long id, String name, String description, Double price, String type, Vehicle vehicle) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -60,11 +59,11 @@ public class Accessory {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
