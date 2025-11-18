@@ -20,17 +20,17 @@ public class AccessoireController {
     }
 
     @PostMapping("/vehicle/{vehicleId}")
-    public ResponseEntity<Accessory> create(@PathVariable Long vehicleId, @RequestBody Accessory accessoire) {
+    public ResponseEntity<Accessory> createAccessoires(@PathVariable Long vehicleId, @RequestBody Accessory accessoire) {
         return ResponseEntity.ok(accessoireService.createAccessoire(accessoire, vehicleId));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Accessory> update(@PathVariable Long id, @RequestBody Accessory accessoire) {
+    public ResponseEntity<Accessory> updateAccessoires(@PathVariable Long id, @RequestBody Accessory accessoire) {
         return ResponseEntity.ok(accessoireService.updateAccessoire(id, accessoire));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, String>> delete(@PathVariable Long id) {
+    public ResponseEntity<Map<String, String>> deleteAccessoires(@PathVariable Long id) {
         accessoireService.deleteAccessoire(id);
         Map<String, String> response = new HashMap<>();
         response.put("message", "Accessoire with ID " + id + " has been successfully deleted.");
@@ -38,7 +38,7 @@ public class AccessoireController {
     }
 
     @GetMapping("/vehicle/{vehicleId}")
-    public ResponseEntity<List<Accessory>> listByVehicle(@PathVariable Long vehicleId) {
+    public ResponseEntity<List<Accessory>> listAccessoiresByVehicle(@PathVariable Long vehicleId) {
         return ResponseEntity.ok(accessoireService.getAccessoiresByVehicle(vehicleId));
     }
 }

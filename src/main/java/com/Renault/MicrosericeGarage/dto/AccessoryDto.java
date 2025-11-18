@@ -2,9 +2,7 @@ package com.Renault.MicrosericeGarage.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
-import java.math.BigDecimal;
-
-public class AccessoireDto {
+public class AccessoryDto {
 
     private Long id;
     @NotBlank
@@ -20,10 +18,10 @@ public class AccessoireDto {
     private String type;
     private Long vehicleId; // relation avec le véhicule
 
-    public AccessoireDto() {
+    public AccessoryDto() {
     }
 
-    public AccessoireDto(Long id, String name, String description, Double price, String type, Long vehicleId) {
+    public AccessoryDto(Long id, String name, String description, Double price, String type, Long vehicleId) {
         this.id = id;
         this.name = name;
         this.description = description;

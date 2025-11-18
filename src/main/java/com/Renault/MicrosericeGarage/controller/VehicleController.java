@@ -1,8 +1,6 @@
 package com.Renault.MicrosericeGarage.controller;
 
-
 import com.Renault.MicrosericeGarage.dto.VehicleDto;
-import com.Renault.MicrosericeGarage.entity.Garage;
 import com.Renault.MicrosericeGarage.entity.Vehicle;
 import com.Renault.MicrosericeGarage.repository.GarageRepository;
 import com.Renault.MicrosericeGarage.service.VehicleService;
@@ -13,9 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/vehicles")
 public class VehicleController {
-
     private final VehicleService vehicleService;
-
     private final GarageRepository garageRepository;
 
     public VehicleController(VehicleService vehicleService, GarageRepository garageRepository) {
@@ -29,27 +25,27 @@ public class VehicleController {
     }
 
     @PostMapping
-    public Vehicle create(@RequestBody VehicleDto dto) {
+    public Vehicle createVehicles(@RequestBody VehicleDto dto) {
         return vehicleService.createVehicle(dto);
     }
 
     @PutMapping("/{id}")
-    public Vehicle update(@PathVariable Long id, @RequestBody VehicleDto dto) {
+    public Vehicle updateVehicles(@PathVariable Long id, @RequestBody VehicleDto dto) {
         return vehicleService.updateVehicle(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void deleteVehicles(@PathVariable Long id) {
         vehicleService.deleteVehicle(id);
     }
 
     @GetMapping("/garage/{garageId}")
-    public List<Vehicle> getByGarage(@PathVariable Long garageId) {
+    public List<Vehicle> getVehiclesByGarageId(@PathVariable Long garageId) {
         return vehicleService.getVehiclesByGarage(garageId);
     }
 
     @GetMapping("/brand/{brand}")
-    public List<Vehicle> getByModel(@PathVariable String brand) {
+    public List<Vehicle> getVehiclesByModel(@PathVariable String brand) {
         return vehicleService.getVehiclesByBrand(brand);
     }
 

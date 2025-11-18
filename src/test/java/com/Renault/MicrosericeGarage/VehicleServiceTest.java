@@ -48,7 +48,7 @@ class VehicleServiceTest {
         when(repository.save(any(Garage.class))).thenReturn(createGarageEntity());
 
         // Call the service
-        GarageDto result = service.create(createGarageDto());
+        GarageDto result = service.insertGarage(createGarageDto());
 
         // Verify repository.save() has been called exactly once
         verify(repository, times(1)).save(any(Garage.class));
@@ -76,7 +76,7 @@ class VehicleServiceTest {
                 createGarageDto().getEmail());
         when(repository.save(any(Garage.class))).thenReturn(savedGarage);
 
-        GarageDto result = service.update(1L, createGarageDto());
+        GarageDto result = service.updateGarage(1L, createGarageDto());
 
         // Vérification que findById et save ont été appelés
         verify(repository, times(1)).findById(1L);

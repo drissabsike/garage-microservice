@@ -27,13 +27,13 @@ public class GarageService {
         this.repository = repository;
     }
 
-    public GarageDto create(GarageDto dto) {
+    public GarageDto insertGarage(GarageDto dto) {
         Garage g = GarageMapper.toEntity(dto);
         Garage saved = repository.save(g);
         return GarageMapper.toDto(saved);
     }
 
-    public GarageDto update(Long id, GarageDto dto) {
+    public GarageDto updateGarage(Long id, GarageDto dto) {
         Garage existing = repository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Garage not found with id=" + id));
         existing.setName(dto.getName());
@@ -45,7 +45,7 @@ public class GarageService {
         return GarageMapper.toDto(saved);
     }
 
-    public void delete(Long id) {
+    public void deleteGarage(Long id) {
         if (!repository.existsById(id)) {
             throw new NotFoundException("Garage not found with id=" + id);
         }
@@ -53,13 +53,13 @@ public class GarageService {
     }
 
     @Transactional(readOnly = true)
-    public GarageDto findById(Long id) {
+    public GarageDto findGarageById(Long id) {
         Garage g = repository.findById(id).orElseThrow(() -> new NotFoundException("Garage not found with id=" + id));
         return GarageMapper.toDto(g);
     }
 
     @Transactional(readOnly = true)
-    public Page<GarageDto> findAll(int page, int size, String sortBy, String direction, Optional<String> cityFilter){
+    public Page<GarageDto> findAllGarage(int page, int size, String sortBy, String direction, Optional<String> cityFilter){
         Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
         Pageable pageable = PageRequest.of(page, size, sort);
         Specification<Garage> spec = (root, query, cb) -> {
